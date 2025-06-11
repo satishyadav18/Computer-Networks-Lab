@@ -22,8 +22,10 @@ int main() {
 
   char s[50];
 
-  recv(cd, s, sizeof(s), 0); // recieve
-  printf("Client says: %s\n", s);
+  while (1) {
+    recv(cd, s, sizeof(s), 0); // recieve
+    printf("Client says: %s\n", s);
+  }
 
   close(sd);
   close(cd);

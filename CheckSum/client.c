@@ -1,9 +1,9 @@
 // Checksum Client Side
-#include <arpa/inet.h>
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 int bin_to_dec(const char *arr, int len) {
     int dec = 0;

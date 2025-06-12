@@ -7,7 +7,6 @@
 
 int main(){
 
-    char store[100],data[100];
     int sd,cadl,r=0,temp;
     struct sockaddr_in sad,cad;
     sd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
@@ -15,6 +14,7 @@ int main(){
     sad.sin_port=htons(9995);
     sad.sin_addr.s_addr=inet_addr("127.0.0.1");
     connect(sd, (struct sockaddr *)&sad, sizeof(sad));
+    char store[100],data[100];
     printf("Enter the data : ");
     scanf("%s",store);
 

@@ -6,27 +6,29 @@
 int main(){
     int sd,cd;
     struct sockaddr_in sad,cad;
-    char str[50],div[50];
     sd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     sad.sin_family=AF_INET;
     sad.sin_port=htons(9995);
     sad.sin_addr.s_addr=inet_addr("127.0.0.1");
     bind(sd, (struct sockaddr *)&sad, sizeof(sad));
     listen(sd,10);
-    int choice, onecount = 0;
     int cadl=sizeof(cad);
     cd=accept(sd, (struct sockaddr *)&cad, &cadl);
+    int choice;
+    char str[50],div[50];
     recv(cd,str,sizeof(str),0);
     recv(cd,div,sizeof(div),0);
     recv(cd,&choice,sizeof(int),0);
     printf("Received string: %s\n", str);
+    int len = strlen(str);
     if(choice == 1){
-        if(str[0] == '1'){
-            str[0] = '0';
+        if(str[len-2] == '1'){
+            str[len-2] = '0';
         }
         else{
-            str[0] = '1';
+            str[len-2] = '1';
         }
+        printf("Error introduced in the received string: %s\n", str);
     }
     for(int i=0;i<=strlen(str)-strlen(div);i++){
         if(str[i]=='1'){

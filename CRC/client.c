@@ -5,6 +5,7 @@
 int main(){
     int sd,choice;
     struct sockaddr_in sad,cad;
+
     sd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     sad.sin_family=AF_INET;
     sad.sin_port=htons(9995);
@@ -21,13 +22,18 @@ int main(){
     for(int i=0;i<(strlen(div))-1;i++){
         strcat(str,"0");
     }
-    for(int i=0;i<=strlen(str)-strlen(div);i++){
+    for(int i=0;i<=strlen(str)-strlen(div);i++){   //i<strlen(newStr);
         if(str[i]=='1'){
             for(int j=0;j<strlen(div);j++){
                 str[i+j]=((div[j]-'0' ^ str[i+j]-'0'))+'0';
             }
         }
     }
+    printf("CRC bits: ");
+    for(int i = strlen(str) - strlen(div) + 1; i < strlen(str); i++) {
+        printf("%c", str[i]);
+    }
+    printf("\n");
     for(int i=0;i<strlen(newStr)-1;i++){
         str[i]=newStr[i];
     }

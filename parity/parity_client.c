@@ -17,7 +17,7 @@ int main(){
     char ch;
     int count = 0;
     printf("Enter a binary string (only 0s and 1s):\n");
-    scanf(" %[^\n]", string); // read entire line including spaces
+    scanf(" %s", string); // read entire line including spaces
     for (int i = 0; string[i] != '\0'; i++) {  //i < strlen(string)
         if (string[i] == '1') {
             count++;
